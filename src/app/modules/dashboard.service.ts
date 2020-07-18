@@ -1,11 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Paciente } from '../shared/pacientes';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  constructor() { }
+  apiURL = 'http://localhost:3000/pacientes';
+
+
+  constructor(private _http: HttpClient) { }
+
+  getPacientes(): Observable<Paciente> {
+    return this._http.get<Paciente>(this.apiURL)
+  }
 
   bigChart() {
     return [{
@@ -17,40 +27,41 @@ export class DashboardService {
     }];
   }
 
-  cards() {
-    return [71, 78, 39, 66];
-  }
 
-  pieChart() {
+  pieChartEstado() {
     return [{
-      name: 'Chrome',
-      y: 61.41,
-      sliced: true,
-      selected: true
+      name: 'Recuperados',
+      y: 60
     }, {
-      name: 'Internet Explorer',
-      y: 11.84
+      name: 'Leve',
+      y: 30
     }, {
-      name: 'Firefox',
-      y: 10.85
-    }, {
-      name: 'Edge',
-      y: 4.67
-    }, {
-      name: 'Safari',
-      y: 4.18
-    }, {
-      name: 'Sogou Explorer',
-      y: 1.64
-    }, {
-      name: 'Opera',
-      y: 1.6
-    }, {
-      name: 'QQ',
-      y: 1.2
-    }, {
-      name: 'Other',
-      y: 2.61
+      name: 'Fallecido',
+      y: 10
     }];
+  }
+  pieChartSexo() {
+    return [{
+      name: 'Hombres',
+      y: 500
+    }, {
+      name: 'Mujeres',
+      y: 600
+    }]
+  }
+  pieChartEdad() {
+    return [{
+      name:'Infancia',
+      y: 100
+    }, {
+      name: 'Juventud',
+      y: 500
+    }, {
+      name: 'Adultez',
+      y:200
+    }, {
+      name: 'Tercera edad',
+      y: 50
+    }]
   }
 }

@@ -1,0 +1,50 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <div fxFlex="100">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Numero de caso -->
+                <ng-container matColumnDef="no">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.id}} </td>
+                </ng-container>
+
+                <!-- Fecha de notificacion -->
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef> Fecha de notificacion </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.fecha_notif}} </td>
+                </ng-container>
+
+                <!-- Ciudad -->
+                <ng-container matColumnDef="ciudad">
+                    <th mat-header-cell *matHeaderCellDef> Ciudad </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.ciu_ubic}} </td>
+                </ng-container>
+
+                <!-- Edad -->
+                <ng-container matColumnDef="edad">
+                    <th mat-header-cell *matHeaderCellDef> Edad </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.edad}} </td>
+                </ng-container>
+
+                <!-- Sexo -->
+                <ng-container matColumnDef="sexo">
+                    <th mat-header-cell *matHeaderCellDef> Sexo </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.sexo}} </td>
+                </ng-container>
+
+                <!-- Estado -->
+                <ng-container matColumnDef="estado">
+                    <th mat-header-cell *matHeaderCellDef> Estado </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.estado}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+        </div>
+
+    </div>
+</div>

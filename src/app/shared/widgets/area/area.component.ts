@@ -25,10 +25,6 @@ export class AreaComponent implements OnInit {
       title: {
         text: 'Numero de casos'
       },
-      tooltip: {
-        split: true,
-        valueSuffix: 'mil'
-      },
       credits: {
         enabled: false
       },
