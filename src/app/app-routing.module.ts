@@ -6,6 +6,7 @@ import { PostsComponent } from './modules/posts/posts.component';
 import { ListComponent } from './modules/list/list.component';
 import { AddComponent } from './modules/add/add.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from 'src/app/auth/auth.guard'
 
 const routes: Routes = [{
   path: '',
@@ -23,6 +24,7 @@ const routes: Routes = [{
   }, {
     path: 'list',
     component: ListComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'add',
     component: AddComponent
