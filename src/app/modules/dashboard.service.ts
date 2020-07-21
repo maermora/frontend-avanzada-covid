@@ -9,18 +9,20 @@ import { Observable } from 'rxjs';
 export class DashboardService {
 
   apiURL = 'http://localhost:3000/pacientes';
+  hombres = [];
+  mujeres = [];
 
 
-  constructor(private _http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getPacientes(): Observable<any> {
-    return this._http.get<any>(this.apiURL)
+  getPacientes() {
+    return this.http.get<any>(this.apiURL)
   }
-  getPacientesHombres(): Observable<any> {
-    return this._http.get<any>(this.apiURL + '?sexo=M')
+  getPacientesHombres() {
+    return this.http.get<any>(this.apiURL + '?sexo=M')
   }
-  getPacientesMujeres(): Observable<any> {
-    return this._http.get<any>(this.apiURL + '?sexo=F')
+  getPacientesMujeres() {
+    return this.http.get<any>(this.apiURL + '?sexo=F')
   }
   
   bigChart() {
@@ -47,14 +49,23 @@ export class DashboardService {
       y: 10
     }];
   }
+  getNumeroSexo(){
+    
+  }
   pieChartSexo() {
+    this.getPacientesHombres().subscribe((data) => {
+      this.hombres = data;
+    });
+    this.getPacientesMujeres().subscribe((data) => {
+      this.mujeres = data;
+    });
     return [{
       name: 'Hombres',
-      y: 500
+      y: this.hombres.length
     }, {
       name: 'Mujeres',
-      y: 600
-    }]
+      y: this.mujeres.length
+  }]
   }
   pieChartEdad() {
     return [{

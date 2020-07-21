@@ -20,7 +20,6 @@ export class SigninComponent implements OnInit {
   }
   signupUsuario(){
     console.log(this.user);
-    if (this.user.password != this.user.password2) return console.log('no son password iguales');
     this.authService.signupUser(this.user)
     .subscribe(
       res => {
