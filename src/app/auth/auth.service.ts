@@ -12,14 +12,25 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   loginUser(user) {
-    return this.http.post<any>(this.URL + '/login', user)
+    return this.http.post<any>(this.URL + '/login', user);
+  }
+  signupUser(user){
+    return this.http.post<any>(this.URL + '/signup', user);
   }
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('email');
     this.router.navigate(['/login']);
   }
   loggedIn(){
     return !!localStorage.getItem('token');
+  }
+  getUser(){
+    return localStorage.getItem('user');
+  }
+  getEmail(){
+    return localStorage.getItem('email');
   }
 
 }

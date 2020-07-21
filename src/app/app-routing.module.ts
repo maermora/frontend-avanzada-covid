@@ -7,6 +7,7 @@ import { ListComponent } from './modules/list/list.component';
 import { AddComponent } from './modules/add/add.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from 'src/app/auth/auth.guard'
+import { SigninComponent } from './auth/signin/signin.component';
 
 const routes: Routes = [{
   path: '',
@@ -26,8 +27,8 @@ const routes: Routes = [{
     component: ListComponent,
     canActivate: [AuthGuard]
   }, {
-    path: 'add',
-    component: AddComponent
+    path: 'signup',
+    component: SigninComponent
   }]
 }, {
   path: 'login',

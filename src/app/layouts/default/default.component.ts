@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-default',
@@ -8,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class DefaultComponent implements OnInit {
 
   sideBarOpen = true;
+  user: String;
+  email: String;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.loadUser();
+   }
+
+  loadUser(){
+    this.user = localStorage.getItem('user');
+    this.email = localStorage.getItem('email');
+    console.log('desde default: ',this.user, this.email);
+  }
 
 
   sideBarToggler() {
