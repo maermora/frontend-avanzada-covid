@@ -13,20 +13,27 @@ export class DashboardService {
 
   constructor(private _http: HttpClient) { }
 
-  getPacientes(): Observable<Paciente> {
-    return this._http.get<Paciente>(this.apiURL)
+  getPacientes(): Observable<any> {
+    return this._http.get<any>(this.apiURL)
   }
-
+  getPacientesHombres(): Observable<any> {
+    return this._http.get<any>(this.apiURL + '?sexo=M')
+  }
+  getPacientesMujeres(): Observable<any> {
+    return this._http.get<any>(this.apiURL + '?sexo=F')
+  }
+  
   bigChart() {
+    
     return [{
       name: 'Casos confirmados',
-      data: [0, 53, 56, 500, 1000, 2000, 4000]
+      data: [0, 53, 56, 500, 1000]
     }, {
       name: 'Decesos',
-      data: [0, 23, 25, 25, 50, 100, 200]
+      data: [0, 23, 25, 25, 50]
     }];
+    
   }
-
 
   pieChartEstado() {
     return [{

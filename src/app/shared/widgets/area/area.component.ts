@@ -20,10 +20,13 @@ export class AreaComponent implements OnInit {
   ngOnInit() {
     this.chartOptions = {
       chart: {
-        type: 'area'
+        type: 'bar'
       },
       title: {
         text: 'Numero de casos'
+      },
+      xAxis: {
+        categories: ['Marzo','Abril','Mayo','Junio','Julio']
       },
       credits: {
         enabled: false

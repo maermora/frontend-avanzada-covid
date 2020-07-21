@@ -21,7 +21,6 @@ export class DefaultComponent implements OnInit {
   loadUser(){
     this.user = localStorage.getItem('user');
     this.email = localStorage.getItem('email');
-    console.log('desde default: ',this.user, this.email);
   }
 
 
