@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Paciente } from '../shared/pacientes';
 import { Observable } from 'rxjs';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,7 @@ export class DashboardService {
   getPacientesMujeres() {
     return this.http.get<any>(this.apiURL + '?sexo=F')
   }
+  
   // Estado
   getPacientesAsintomatico() {
     return this.http.get<any>(this.apiURL + '?estado=Asintomático')
@@ -126,20 +128,16 @@ export class DashboardService {
     }];
   }
   
-  pieChartSexo() {
-    this.getPacientesHombres().subscribe((data) => {
-      this.hombres = data;
-    });
-    this.getPacientesMujeres().subscribe((data) => {
-      this.mujeres = data;
-    });
+   pieChartSexo() {
+    this.getPacientesMujeres().subscribe((data) => {this.mujeres =data})
+    this.getPacientesHombres().subscribe((data) => {this.hombres = data})
     return [{
       name: 'Hombres',
-      y: this.hombres.length
+      y:this.hombres.length
     }, {
       name: 'Mujeres',
-      y: this.mujeres.length
-  }]
+      y:this.mujeres.length
+    }]   
   }
 
   pieChartEdad() {

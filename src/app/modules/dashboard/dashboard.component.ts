@@ -9,7 +9,7 @@ import { DashboardService } from '../dashboard.service';
 export class DashboardComponent implements OnInit {
 
   bigChart = [];
-  pieChartSexo = [];
+  pieChartSexo: any = [];
   pieChartEstado = [];
   pieChartEdad = [];
   pacientes: any = [];

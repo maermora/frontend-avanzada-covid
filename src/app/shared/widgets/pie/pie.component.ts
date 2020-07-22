@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-widget-pie',
@@ -15,9 +16,16 @@ export class PieComponent implements OnInit {
   @Input() data = [];
   @Input() name: string;
 
+  subscription: Subscription;
   constructor() { }
 
   ngOnInit() {
+
+    const source = interval(10000);
+
+    this.subscription = source.subscribe(val => {
+      
+    })
     this.chartOptions = {
       chart: {
         plotBackgroundColor: null,
@@ -60,7 +68,7 @@ export class PieComponent implements OnInit {
       window.dispatchEvent(
         new Event('resize')
       );
-    }, 300);
+    }, 700);
   }
 
 }
