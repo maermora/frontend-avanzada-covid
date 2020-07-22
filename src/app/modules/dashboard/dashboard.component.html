@@ -13,10 +13,10 @@
         <app-widget-card label="Total de casos" [total]="pacientes.length"></app-widget-card>
     </mat-card>
     <mat-card fxFlex="25">
-        <app-widget-card label="Porcentaje de recuperados" total="10" symbol="%"></app-widget-card>
+        <app-widget-card label="Porcentaje de tercera edad" [total]="(vejez.length / pacientes.length*100).toFixed(2)" symbol="%"></app-widget-card>
     </mat-card>
     <mat-card fxFlex="25">
-        <app-widget-card label="Porcentaje de decesos" total="50" symbol="%"></app-widget-card>
+        <app-widget-card label="Porcentaje de decesos" [total]="(fallecidos.length / pacientes.length*100).toFixed(2)" symbol="%"></app-widget-card>
     </mat-card>
 </div>
 

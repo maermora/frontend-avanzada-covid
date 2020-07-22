@@ -5,7 +5,6 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.componen
 import { RouterModule } from '@angular/router';
 import { PostsComponent } from 'src/app/modules/posts/posts.component';
 import { ListComponent } from 'src/app/modules/list/list.component';
-import { AddComponent } from 'src/app/modules/add/add.component'
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -17,7 +16,6 @@ import { DashboardService } from 'src/app/modules/dashboard.service';
     DashboardComponent,
     PostsComponent,
     ListComponent,
-    AddComponent
   ],
   imports: [
     CommonModule,

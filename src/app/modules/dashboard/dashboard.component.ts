@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
-import { interval, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,11 +9,12 @@ import { map } from 'rxjs/operators';
 export class DashboardComponent implements OnInit {
 
   bigChart = [];
-  // Arreglos para categorizacion por sexo:
   pieChartSexo = [];
   pieChartEstado = [];
   pieChartEdad = [];
   pacientes: any = [];
+  fallecidos = [];
+  vejez = [];
 
 
 
@@ -23,6 +22,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadPacientes();
+    this.loadFallecidos();
+    this.loadTerceraEdad();
     this.pieChartSexo = this.dashboardService.pieChartSexo();
     this.bigChart = this.dashboardService.bigChart();
     this.pieChartEstado = this.dashboardService.pieChartEstado();
@@ -35,5 +36,19 @@ export class DashboardComponent implements OnInit {
       this.pacientes = data;
     })
   }
+  loadFallecidos(){
+    return this.dashboardService.getPacientesFallecido()
+    .subscribe((data) => {
+      this.fallecidos = data;
+
+    })
+  }
+  loadTerceraEdad(){
+    return this.dashboardService.getPacientesVejez()
+    .subscribe((data) => {
+      this.vejez = data;
+    })
+  }
+
 
 }

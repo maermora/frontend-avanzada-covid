@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,14 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
 
-  user = {};
+  @Input() msgError: string;
+
+  user = {
+    user: '',
+    email: '',
+    password: '',
+    password2: ''
+  };
 
   constructor(
     private authService: AuthService,
@@ -19,18 +26,16 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
   }
   signupUsuario(){
-    console.log(this.user);
+    if(this.user.password != this.user.password2) return this.msgError='Contraseñas no coinciden'
     this.authService.signupUser(this.user)
     .subscribe(
       res => {
         console.log(res);
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('user',res.signed_user);
-        localStorage.setItem('email',res.signed_email);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
       },
-      err => console.log(err)
+      err => this.msgError=err.error
     )
+    
 
   }
 

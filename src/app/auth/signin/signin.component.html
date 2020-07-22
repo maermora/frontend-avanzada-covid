@@ -2,31 +2,34 @@
     <mat-card-content>
       <form (submit)="signupUsuario()">
         <h2>Registrar Usuario</h2>
+        <mat-error>
+          {{msgError}}
+        </mat-error>
         <mat-form-field class="full-width-input">
           <input type="text" [(ngModel)]="user.user" name="user" matInput placeholder="Usuario"  required>
           <mat-error>
-            Please provide a valid email address
+            Porfavor ingrese un nombre de usuario
           </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width-input">
-            <input type="text" [(ngModel)]="user.email" name="user" matInput placeholder="Correo electronico"  required>
+            <input type="email" [(ngModel)]="user.email" name="email" matInput placeholder="Correo electronico"  required>
             <mat-error>
-              Please provide a valid email address
+              Porfavor ingrese un correo valido
             </mat-error>
           </mat-form-field>
         <mat-form-field class="full-width-input">
           <input type="password" [(ngModel)]="user.password" name="password" matInput  placeholder="Contraseña"  required>
           <mat-error>
-            Please provide a valid password
+              Porfavor ingrese su contraseña
           </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width-input">
             <input type="password" [(ngModel)]="user.password2" name="password-repeat" matInput  placeholder="Repita su contraseña"  required>
             <mat-error>
-              Please provide a valid password
+              Porfavor repita su contraseña
             </mat-error>
           </mat-form-field>
-        <button mat-raised-button color="primary">Login</button>
+        <button mat-raised-button color="primary">Registrar</button>
       </form>
     </mat-card-content>
 </mat-card>
