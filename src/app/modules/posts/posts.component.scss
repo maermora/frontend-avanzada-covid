@@ -1,7 +1,15 @@
 img {
-    width: 70%;
-    height: 50%;
+    width: 50%;
+    height: 30%;
 }
 .mat-card {
     text-align: center;
+}
+.protected {
+    display: flex;
+    justify-content: space-evenly;
+    img {
+        width: 40%;
+        height: 20%;
+    }
 }

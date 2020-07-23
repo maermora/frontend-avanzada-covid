@@ -16,16 +16,10 @@ export class PieComponent implements OnInit {
   @Input() data = [];
   @Input() name: string;
 
-  subscription: Subscription;
   constructor() { }
 
   ngOnInit() {
 
-    const source = interval(10000);
-
-    this.subscription = source.subscribe(val => {
-      
-    })
     this.chartOptions = {
       chart: {
         plotBackgroundColor: null,
