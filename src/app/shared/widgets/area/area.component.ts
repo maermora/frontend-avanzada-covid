@@ -11,22 +11,26 @@ import HC_exporting from 'highcharts/modules/exporting';
 export class AreaComponent implements OnInit {
 
   chartOptions: {};
-  @Input() data: any = [];
-
+  @Input() data: any[] = [];
+  @Input() decesos: any[] = [];
+  @Input() pasto: any[] = [];
   Highcharts = Highcharts;
-
   constructor() { }
-
   ngOnInit() {
     this.chartOptions = {
       chart: {
-        type: 'bar'
+        zoomType: 'x'
       },
       title: {
         text: 'Numero de casos'
       },
       xAxis: {
-        categories: ['Marzo','Abril','Mayo','Junio','Julio']
+        type: 'datetime'
+      },
+      yAxis: {
+        title: {
+          text: 'Casos'
+        }
       },
       credits: {
         enabled: false
@@ -34,7 +38,19 @@ export class AreaComponent implements OnInit {
       exporting: {
         enabled: true,
       },
-      series: this.data
+      series: [{
+        type: 'area',
+        name: 'Casos Covid',
+        data: this.data
+      },{
+        type: 'area',
+        name: 'Decesos',
+        data: this.decesos
+      }, {
+        type: 'area',
+        name: 'Casos pasto',
+        data: this.pasto
+      }]
     };
 
     HC_exporting(Highcharts);

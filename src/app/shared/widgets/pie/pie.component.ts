@@ -19,7 +19,7 @@ export class PieComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    
     this.chartOptions = {
       chart: {
         plotBackgroundColor: null,

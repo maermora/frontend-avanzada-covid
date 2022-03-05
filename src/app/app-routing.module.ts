@@ -20,23 +20,23 @@ const routes: Routes = [{
     path: 'dashboard',
     
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   }, {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   }, {
     path: 'posts',
     component: PostsComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   }, {
     path: 'list',
     component: ListComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   }, {
     path: 'signup',
     component: SigninComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   }]
 }, {
   path: 'login',

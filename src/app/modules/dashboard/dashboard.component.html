@@ -1,11 +1,8 @@
-<div>
-    <app-widget-area [data]="bigChart"></app-widget-area>
+<div *ngIf="bigChart.length > 0 && decesos.length > 0 && pasto.length > 0 else spinner">
+    <app-widget-area [data]="bigChart" [decesos]="decesos" [pasto]="pasto"></app-widget-area>
 </div>
 
 <br>
-
-<mat-divider></mat-divider>
-
 <br>
 
 <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
@@ -16,7 +13,7 @@
         <app-widget-card label="Porcentaje de tercera edad" [total]="(vejez.length / pacientes.length*100).toFixed(2)" symbol="%"></app-widget-card>
     </mat-card>
     <mat-card fxFlex="25">
-        <app-widget-card label="Porcentaje de decesos" [total]="(fallecidos.length / pacientes.length*100).toFixed(2)" symbol="%"></app-widget-card>
+        <app-widget-card label="Porcentaje de decesos" [total]="(decesos.length / pacientes.length*100).toFixed(2)" symbol="%"></app-widget-card>
     </mat-card>
 </div>
 
@@ -27,16 +24,16 @@
 <br>
 
 <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-    <div fxFlex="100">
+    <div *ngIf="pieChartEstado.length > 0 else spinner" fxFlex="100">
         <app-widget-pie [data]="pieChartEstado" name="Grafico por estado"></app-widget-pie>
     </div>
 </div>
 
 <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-    <div fxFlex="50">
+    <div *ngIf="pieChartEdad.length > 0 else spinner" fxFlex="50">
         <app-widget-pie [data]="pieChartEdad" name="Grafico por edad"></app-widget-pie>
     </div>
-    <div fxFlex="50">
+    <div *ngIf="pieChartSexo.length > 0 else spinner" fxFlex="50">
         <app-widget-pie [data]="pieChartSexo" name="Grafico de sexo"></app-widget-pie>
     </div>
 </div>
@@ -44,3 +41,9 @@
 <br>
 <br>
 <br>
+
+<ng-template #spinner>
+    <div fxLayout="row" fxLayoutAlign="center">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>

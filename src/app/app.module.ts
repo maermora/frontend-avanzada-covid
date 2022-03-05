@@ -7,7 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
-import { MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatOptionModule, MatSelectModule, MatDividerModule, MatGridListModule} from '@angular/material';
+import { MatIconModule,
+         MatToolbarModule,
+         MatMenuModule,
+         MatCardModule,
+         MatFormFieldModule,
+         MatInputModule,
+         MatButtonModule,
+         MatOptionModule, 
+         MatSelectModule, 
+         MatDividerModule, 
+         MatGridListModule,
+         MatProgressSpinnerModule} from '@angular/material';
 
 import { LoginComponent } from './auth/login/login.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -38,6 +49,7 @@ import { HomeComponent } from './modules/home/home.component';
     MatSelectModule,
     MatDividerModule,
     MatGridListModule,
+    MatProgressSpinnerModule,
     FormsModule,
   ],
   providers: [],
